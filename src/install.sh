@@ -14,3 +14,15 @@ figlet Installer
 
 for script in $(_getScripts); do _runScript $script; done
 
+profile=$(gum choose --no-limit --cursor-prefix "( ) " --selected-prefix "(x) " --unselected-prefix "( ) " "Hyprland" "Qtile")
+
+if [[ -n "$profile" ]]; then
+    echo ":: Profile/s selected:" $profile
+else
+    echo ":: No profile selected. Installation canceled."
+    exit
+fi
+
+if [[ $profile == "Hyprland" ]]; then
+    for script in $(_getScripts "optional/hyprland"); do _runScript "optional/hyprland/$script"; done
+fi
