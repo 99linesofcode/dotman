@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DOTMAN_PATH=$(realpath "$(dirname "$0")/..")
+
+SCRIPT="$DOTMAN_PATH/src/install.sh"
+
+[[ -n $SCRIPT ]] && gum confirm "Run install script?" && source $SCRIPT
